@@ -1,0 +1,97 @@
+.selector{
+  width: 600px;
+  margin: 0 auto;
+}
+
+.image{
+  width: 600px;
+  height: 600px;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 8px 13px 14px 3px rgba(0, 0, 0, 0.33);
+  margin-top: 3vh;
+}
+
+.background{
+  width: 600px;
+  position: absolute;
+}
+
+.right{
+  position: absolute;
+  right: 0;
+}
+
+.player{
+  position: absolute;
+  top: 281px;
+  height: 312px;
+  left: -47px;
+  opacity: 0.89;
+}
+
+.Aurier{
+  position: relative;
+  top: 350px;
+  height: 248px;
+  left: 2px;
+
+}
+
+.team{
+  position: absolute;
+  width: 60px;
+}
+
+.hometeam{
+  z-index: 10;
+  top: 454px;
+  left: 204px;
+}
+
+.awayteam{
+  z-index: 10;
+  top: 453px;
+  left: 339px;
+}
+
+.playerName{
+  position: absolute;
+  color: white;
+  font-size: 52px;
+  top: 335px;
+  left: 205px;
+  width: 190px;
+  text-align: center;
+  font-family: roboto;
+}
+
+.playerTeamName{
+  color: white;
+  position: absolute;
+  top: 398px;
+  left: 219px;
+  width: 160px;
+  text-align: center;
+  font-family: quicksand;
+}
+
+.gameDate{
+  position: absolute;
+  color: white;
+  top: 417px;
+  width: 147px;
+  left: 227px;
+  text-align: center;
+  color: #e3e36e;
+  font-family: quicksand;
+}
+
+.score{
+  position: absolute;
+  color: white;
+  font-size: 30px;
+  top: 463px;
+  left: 271px;
+  font-family: quicksand;
+}

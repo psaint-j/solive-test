@@ -1,0 +1,31 @@
+.image{
+  width: 700px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.background{
+  height:97vh;
+  position: absolute;
+}
+
+.right{
+  position: absolute;
+  right: 0;
+}
+
+.team{
+  position: absolute;
+  width: 9vh;
+}
+.hometeam{
+  z-index: 10;
+  top: 502px;
+  left: 207px;
+}
+
+.awayteam{
+  z-index: 10;
+  top: 502px;
+  left: 407px;
+}

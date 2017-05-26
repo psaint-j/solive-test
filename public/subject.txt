@@ -1,0 +1,38 @@
+
+
+Frontend - ReactJS
+In this exercise you need to work with the ReactJS library.
+The idea is to create a template similar to the example (example/template-example.png) with the assets we provide you :
+
+images/
+  background.jpg
+  player1.png
+  player2.png
+  player3.png
+  psg.png
+  bastia.png
+
+datas/data.json
+  players
+  teams
+  games
+  medias (obviously you can change the image path to fit your react application)
+
+You don't need to render a png image or anything, just display your own template using react & css on a web page
+
+You need to display on your template :
+- player image (example : left image)
+- player name (example : Aurier)
+- team name (example : PARIS SG)
+- team logo (example  bastia.png & psg.png)
+- game score (example : 1 - 2)
+- game date (example : not present on the visual)
+
+Once you have it, you need to implement a setting form to make your data dynamic, for example :
+a player <select /> (with the list of players found in data.json) :
+  will change the player name & image on the template based on which player you choose
+
+a game <select /> (with the list of games found in data.json) :
+  will change the score/date of the game and the team's name/logo
+
+
