@@ -5,9 +5,10 @@ import './css/semantic-ui-css/semantic.css'
 //JSON data
 import data from './datas/data'
 //Components
-import GamesSelector from './components/GamesSelector'
-import PlayersSelector from './components/PlayersSelector'
+import { Selector } from  "./components/selector";
 import GetImage from './components/GetImage'
+//HOC
+import { GameContext, Consumer } from './Hoc/GameContext';
 //background image
 const background = './images/background.jpg'
 
@@ -32,16 +33,13 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <div className="selector">
-              <GamesSelector selectedGame={this.state.selectedGame} data={data} onChangeGames={this.onChangeGames} />
-              <PlayersSelector selectedPlayer={this.state.selectedPlayer} data={data} onChangePlayer={this.onChangePlayer} />
-          </div>
+        <GameContext>
+          <Selector data={data}/>
           <div className="image">
             <img className="background" src={background} alt="games"/>
-            <GetImage data={data} selected={this.state}/>
+            <GetImage data={data} /> //Provider
           </div>
-        </div>
+        </GameContext>
     );
   }
 }
