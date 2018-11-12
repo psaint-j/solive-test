@@ -54,6 +54,8 @@ const GetImage = ({data, state, onChangeGames, onChangePlayer}) => {
     var homeObj =    data.games[state.selectedGame].homeTeamScore
     var playerObj =  data.players[state.selectedPlayer]
 
+    console.log(state);
+
     //get path
 
     var awayTeamPath =  getTeamPathByID(data, awayObj.teamId)

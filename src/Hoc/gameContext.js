@@ -1,31 +1,41 @@
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, useState } from 'react';
 
 
 export const { Provider, Consumer } = createContext()
 
-export default class GameContext extends Component {
-  state = {
-    selectedGame:0,
-    selectedPlayer:0
+const GameContext = ({children}) => {
+
+  const selectedGame = useInputValue(0);
+  const selectedPlayer = useInputValue(0);
+
+  return (
+    <Provider value={
+      {
+        state: {selectedGame: selectedGame.value, selectedPlayer: selectedPlayer.value},
+        onChangeGames: selectedGame.onChange,
+        onChangePlayer: selectedPlayer.onChange,
+      }
+    }>
+      {children}
+    </Provider>
+  )
+}
+
+
+export default GameContext
+
+
+
+ /// new file
+
+const useInputValue = (initalValue) => {
+  const [value, setValue] = useState(initalValue);
+  const handleChangeInput = (e) => {
+    setValue(e.target.value)
   }
 
- //set the current game value
-  onChangeGames = (e) => {
-      const selectedGame = e.target.value
-      this.setState({selectedGame})
-  }
-
-//set the current player value
-  onChangePlayer = (e) => {
-      const selectedPlayer = e.target.value
-      this.setState({selectedPlayer})
-  }
-
-  render() {
-    return (
-      <Provider value={{state: this.state, onChangeGames: this.onChangeGames, onChangePlayer: this.onChangePlayer}}>
-        {this.props.children}
-      </Provider>
-    )
+  return {
+    value: value,
+    onChange: handleChangeInput
   }
 }
