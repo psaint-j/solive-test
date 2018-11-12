@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import GameContext, { Consumer } from './Hoc/gameContext'
 //CSS
 import './App.css';
 import './css/semantic-ui-css/semantic.css'
 //JSON data
 import data from './datas/data'
 //Components
-import GamesSelector from './components/GamesSelector'
-import PlayersSelector from './components/PlayersSelector'
+
 import GetImage from './components/GetImage'
+import Selector from './components/Selector'
 //background image
 const background = './images/background.jpg'
+
+// HOC
 
 class App extends Component {
 
@@ -32,16 +35,18 @@ class App extends Component {
 
   render() {
     return (
-        <div>
-          <div className="selector">
-              <GamesSelector selectedGame={this.state.selectedGame} data={data} onChangeGames={this.onChangeGames} />
-              <PlayersSelector selectedPlayer={this.state.selectedPlayer} data={data} onChangePlayer={this.onChangePlayer} />
-          </div>
+        <GameContext>
+          <Selector data={data} />
+          <Consumer>
+            {value => (
+              <div>{value.state.selectedGame}</div>
+            )}
+          </Consumer>
           <div className="image">
             <img className="background" src={background} alt="games"/>
             <GetImage data={data} selected={this.state}/>
           </div>
-        </div>
+        </GameContext>
     );
   }
 }

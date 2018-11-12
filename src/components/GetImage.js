@@ -1,9 +1,8 @@
 import React from 'react'
+import withGameContext from '../Hoc/withGameContext'
 
-export default class GetImage extends React.Component{
-  render(){
+const GetImage = ({data, state, onChangeGames, onChangePlayer}) => {
     //return TeamName
-
     const getTeamNameByID = (data, id) => {
       var  teamName = null
       data.teams.forEach(team => {
@@ -51,27 +50,30 @@ export default class GetImage extends React.Component{
 
      //object awayTeamScore / homeTeamScore / players
 
-    var awayObj =    this.props.data.games[this.props.selected.selectedGame].awayTeamScore
-    var homeObj =    this.props.data.games[this.props.selected.selectedGame].homeTeamScore
-    var playerObj =  this.props.data.players[this.props.selected.selectedPlayer]
+    var awayObj =    data.games[state.selectedGame].awayTeamScore
+    var homeObj =    data.games[state.selectedGame].homeTeamScore
+    var playerObj =  data.players[state.selectedPlayer]
 
     //get path
 
-    var awayTeamPath =  getTeamPathByID(this.props.data, awayObj.teamId)
-    var homeTeamPath =  getTeamPathByID(this.props.data, homeObj.teamId)
-    var playerPath =    getPlayerPathByID(this.props.data, playerObj.id)
-    var playerTeamName = getTeamNameByID(this.props.data, playerObj.teamId)
-    
+    var awayTeamPath =  getTeamPathByID(data, awayObj.teamId)
+    var homeTeamPath =  getTeamPathByID(data, homeObj.teamId)
+    var playerPath =    getPlayerPathByID(data, playerObj.id)
+    var playerTeamName = getTeamNameByID(data, playerObj.teamId)
+
     return(
       <div>
         <img className={'player ' + playerObj.lastName} src={playerPath} alt={playerObj.lastName}/>
-        <img className="team hometeam" src={homeTeamPath} alt={getTeamNameByID(this.props.data, homeObj.teamId)} />
-        <img className="team awayteam" src={awayTeamPath} alt={getTeamNameByID(this.props.data, awayObj.teamId)} />
+        <img className="team hometeam" src={homeTeamPath} alt={getTeamNameByID(data, homeObj.teamId)} />
+        <img className="team awayteam" src={awayTeamPath} alt={getTeamNameByID(data, awayObj.teamId)} />
         <p className="playerName">{playerObj.lastName.toUpperCase()}</p>
         <p className="playerTeamName">{playerTeamName.toUpperCase()}</p>
-        <p className="gameDate">{dateConverter(this.props.data.games[this.props.selected.selectedGame].timestamp)}</p>
-        <p className="score">{homeObj.score + ' - ' + awayObj.score}</p>
+        <p className="gameDate">{dateConverter(data.games[state.selectedGame].timestamp)}</p>
+        <p className="score">
+          {homeObj.score + ' - ' + awayObj.score}
+        </p>
       </div>
     )
-  }
 }
+
+export default withGameContext(GetImage)
